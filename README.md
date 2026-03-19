@@ -54,30 +54,7 @@ Instead of manual claims:
 
 ![System Workflow Diagram](./mermaid-diagram.png)
 
-```mermaid
-flowchart TD
-
-A[User Registration] --> B[Income Estimation]
-B --> C[Baseline Creation]
-C --> D[Risk Assessment Model]
-D --> E[Premium Assignment]
-E --> F[Continuous Monitoring]
-
-F --> G[Disruption Detection]
-G --> H[Eligibility Validation]
-
-H --> X[Anti-Spoofing Layer]
-X --> I[Fraud Detection]
-
-I --> J{Decision}
-
-J -->|Valid| K[Payout Calculation]
-J -->|Flagged| L[Delayed Validation]
-J -->|Fraud| M[Manual Review]
-
-K --> N[Instant Payout]
-N --> O[Feedback Loop]
-```
+*The diagram above illustrates the end-to-end automated pipeline logic of GigShield AI. It starts by establishing a worker's income baseline and assigning continuous premiums. During real-time monitoring, if a disruption is detected, the workflow seamlessly moves through an **Eligibility Validation**—checking against localized data—before securely passing through an advanced **Anti-Spoofing & Fraud Detection** layer. Finally, the decision engine routes legitimate claims to an **Instant Payout** gateway while flagging anomalous behavior for delayed or manual review.*
 
 ---
 
