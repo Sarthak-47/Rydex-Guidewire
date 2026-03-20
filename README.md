@@ -1,4 +1,4 @@
-# GigShield AI
+# Rydex
 
 ### AI-Powered Parametric Income Protection for Gig Workers
 
@@ -32,7 +32,7 @@ This solution is focused on **Swiggy and Zomato delivery riders operating in flo
 
 ## 3. Solution Overview
 
-GigShield AI is a **parametric insurance platform** providing **automated income protection**.
+Rydex is a **parametric insurance platform** providing **automated income protection**.
 
 Instead of manual claims:
 
@@ -54,7 +54,7 @@ Instead of manual claims:
 
 ![System Workflow Diagram](./mermaid-diagram.png)
 
-*The diagram above illustrates the end-to-end automated pipeline logic of GigShield AI. It starts by establishing a worker's income baseline and assigning continuous premiums. During real-time monitoring, if a disruption is detected, the workflow seamlessly moves through an **Eligibility Validation**—checking against localized data—before securely passing through an advanced **Anti-Spoofing & Fraud Detection** layer. Finally, the decision engine routes legitimate claims to an **Instant Payout** gateway while flagging anomalous behavior for delayed or manual review.*
+*The diagram above illustrates the end-to-end automated pipeline logic of Rydex. It starts by establishing a worker's income baseline and assigning continuous premiums. During real-time monitoring, if a disruption is detected, the workflow seamlessly moves through an **Eligibility Validation**—checking against localized data—before securely passing through an advanced **Anti-Spoofing & Fraud Detection** layer. Finally, the decision engine routes legitimate claims to an **Instant Payout** gateway while flagging anomalous behavior for delayed or manual review.*
 
 ---
 
@@ -182,7 +182,7 @@ Premium = Base × Risk × Season
 
 ## 15. Adversarial Defense & Anti-Spoofing Strategy
 
-GigShield AI is built to handle **coordinated GPS spoofing attacks** using a **multi-signal behavioral verification system**.
+Rydex is built to handle **coordinated GPS spoofing attacks** using a **multi-signal behavioral verification system**.
 
 ### 15.1 Differentiation
 
@@ -234,7 +234,7 @@ Includes:
 
 ## Key Insight
 
-GigShield AI verifies:
+Rydex verifies:
 
 **“Is the user actually experiencing disruption?”**
 
@@ -244,4 +244,4 @@ GigShield AI verifies:
 
 ## 16. Conclusion
 
-GigShield AI represents a fundamental shift in how insurance can serve the gig economy. By replacing slow, subjective manual claims with instant, data-driven parametric triggers, it builds a safety net that actually aligns with the fast-paced reality of gig work. Crucially, its robust behavioral analysis and anti-spoofing logic ensure that the platform remains financially sustainable, protecting genuine riders while filtering out systemic abuse. Ultimately, GigShield AI doesn't just compensate for lost income—it brings true financial stability to the workers who keep our cities moving. 
+Rydex represents a fundamental shift in how insurance can serve the gig economy. By replacing slow, subjective manual claims with instant, data-driven parametric triggers, it builds a safety net that actually aligns with the fast-paced reality of gig work. Crucially, its robust behavioral analysis and anti-spoofing logic ensure that the platform remains financially sustainable, protecting genuine riders while filtering out systemic abuse. Ultimately, Rydex doesn't just compensate for lost income—it brings true financial stability to the workers who keep our cities moving.
