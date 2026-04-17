@@ -699,6 +699,7 @@ The following are explicitly excluded per the DEVTrails 2026 problem statement a
 
 ---
 
+**Pitch Deck:** [https://github.com/Sarthak-47/Rydex-Guidewire.git](https://drive.google.com/file/d/13nRarKxjw0FOds82DMw-NVlIhT_PW7jG/view?usp=drive_link)
 **Repository:** https://github.com/Sarthak-47/Rydex-Guidewire.git
 **Hackathon:** Guidewire DEVTrails 2026
 **Phase 1 Submission:** March 20, 2026
