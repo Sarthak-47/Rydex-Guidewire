@@ -7,8 +7,8 @@ export default function ScoreGauge({ value }: { value: number }) {
   const circumference = 2 * Math.PI * radius;
 
   return (
-    <div className="flex flex-col items-center justify-center p-10 card-premium w-full max-w-sm mx-auto group">
-      <h3 className="text-white/60 font-black uppercase tracking-[0.3em] text-[10px] mb-10 group-hover:text-[var(--color-accent)] transition-colors cursor-help" title="Reflects your remaining coverage weekly cap.">Shield Status</h3>
+    <div className="flex flex-col items-center justify-center p-6 card-premium w-full max-w-sm mx-auto group">
+      <h3 className="text-white/60 font-black uppercase tracking-widest text-[10px] mb-10 group-hover:text-[var(--color-accent)] transition-colors cursor-help" title="Reflects your remaining coverage weekly cap.">Shield Status</h3>
       <div className="relative flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
         {/* Background Circle */}
         <svg width="200" height="200" className="transform -rotate-90">

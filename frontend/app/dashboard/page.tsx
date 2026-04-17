@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { policiesApi, claimsApi, payoutsApi, demoApi, triggerEventsApi, Policy, Claim, Payout, TriggerEvent } from '@/lib/api'
 import ClaimsList from '@/components/ClaimsList'
 import ScoreGauge from '@/components/ScoreGauge'
+import AIAssistant from '@/components/AIAssistant'
 import { motion } from 'framer-motion'
 
 export default function DashboardPage() {
@@ -153,7 +154,7 @@ export default function DashboardPage() {
             <div className="flex items-center justify-center h-[88px] border-b border-white/10">
                 <img src="/rydex_dynamic_logo.png" alt="Rydex Logo" style={{ width: '285px', height: 'auto', objectFit: 'contain' }} />
             </div>
-            <nav className="flex-1 px-6 py-10 space-y-3">
+            <nav className="flex-1 px-6 py-6 space-y-3">
                 {[
                     { id: 'shield', icon: 'security', label: 'Dashboard' },
                     { id: 'ledger', icon: 'payments', label: 'History' },
@@ -161,7 +162,7 @@ export default function DashboardPage() {
                     <button
                         key={item.id}
                         onClick={() => setActiveTab(item.id)}
-                        className={`w-full flex items-center gap-4 px-6 py-4 rounded-[1.5rem] transition-all group ${
+                        className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all group ${
                             activeTab === item.id 
                             ? 'bg-[var(--color-accent)] text-white shadow-lg shadow-[var(--color-accent)]/20' 
                             : 'text-white/70 hover:bg-white/5/5 hover:text-[var(--color-accent)]'
@@ -175,7 +176,7 @@ export default function DashboardPage() {
             <div className="p-6 border-t border-white/10">
                 <button 
                     onClick={logout}
-                    className="w-full flex items-center gap-4 px-6 py-4 rounded-[1.5rem] text-red-600 hover:bg-red-50 transition-all font-black text-[10px] uppercase tracking-widest"
+                    className="w-full flex items-center gap-4 px-6 py-4 rounded-xl text-red-600 hover:bg-red-50 transition-all font-black text-[10px] uppercase tracking-widest"
                 >
                     <span className="material-symbols-outlined">logout</span>
                     <span>Sign Out</span>
@@ -192,20 +193,20 @@ export default function DashboardPage() {
                 <button onClick={logout} className="text-white/60 hover:text-white"><span className="material-symbols-outlined">logout</span></button>
             </header>
 
-            <main className="pt-28 md:pt-16 pb-32 md:pb-16 px-6 md:px-12 max-w-7xl w-full mx-auto">
+            <main className="pt-28 md:pt-16 pb-32 md:pb-16 px-6 md:px-8 max-w-7xl w-full mx-auto">
             {activeTab === 'shield' && (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="space-y-12">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   {/* Left Column */}
                   <div className="lg:col-span-8 space-y-10">
                     <section className="space-y-4">
-                        <h1 className="text-5xl md:text-6xl font-headline font-black tracking-tighter text-on-background">
+                        <h1 className="text-4xl md:text-6xl font-headline font-black tracking-tighter text-on-background">
                           {greeting}, {worker?.name?.split(' ')[0] || 'Rider'}
                         </h1>
                         <div className="flex flex-wrap items-center gap-3">
                             <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/20 shadow-sm text-[var(--color-accent)]">
                                 <span className="material-symbols-outlined text-[16px]" style={{fontVariationSettings: "'FILL' 1"}}>verified_user</span>
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-accent)]">Policy Active</span>
+                                <span className="text-[10px] font-black uppercase tracking-wider text-[var(--color-accent)]">Policy Active</span>
                             </div>
                             <span className="badge-premium">{worker?.zone_name || 'Mumbai Central'} Zone</span>
                             <span className="badge-premium">{hoursCovered.toFixed(1)}h Covered</span>
@@ -234,9 +235,9 @@ export default function DashboardPage() {
                         <button 
                             onClick={fireDemoTrigger} 
                             disabled={triggerLoading || !!triggerStatus}
-                            className="w-full text-left card-premium p-10 flex items-start gap-8 group relative overflow-hidden"
+                            className="w-full text-left card-premium p-6 flex items-start gap-8 group relative overflow-hidden"
                         >
-                            <div className="bg-white/5/5 p-8 rounded-[2rem] flex-shrink-0 group-hover:bg-white/5 text-[var(--color-accent)] group-hover:text-white transition-all duration-500 text-white">
+                            <div className="bg-white/5/5 p-8 rounded-2xl flex-shrink-0 group-hover:bg-white/5 text-[var(--color-accent)] group-hover:text-white transition-all duration-500 text-white">
                                 {triggerLoading || (triggerStatus && !triggerStatus.includes('✅')) ? (
                                     <span className="material-symbols-outlined animate-spin text-4xl">sync</span>
                                 ) : (
@@ -258,7 +259,7 @@ export default function DashboardPage() {
                     </section>
 
                     {/* Peer-to-Peer Oracle Task Widget */}
-                    <section className="bg-white/5/5 rounded-[2rem] p-8 mt-6">
+                    <section className="bg-white/5/5 rounded-2xl p-8 mt-6">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                             <div className="flex items-center gap-6">
                                 <div className="bg-[var(--color-accent)] w-14 h-14 rounded-full flex items-center justify-center text-white">
@@ -295,7 +296,7 @@ export default function DashboardPage() {
                     </section>
 
                 {/* Sub-sections Pattern */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 pb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 pb-20">
                   <section className="space-y-8">
                       <div className="flex justify-between items-center px-4">
                           <h3 className="text-muted">Live Updates</h3>
@@ -303,7 +304,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="card-premium overflow-hidden border-none pb-0">
                           {triggerEvents.length === 0 ? (
-                            <div className="p-16 text-center text-[10px] text-white/60 font-black uppercase tracking-[0.4em] italic">
+                            <div className="p-8 text-center text-[10px] text-white/60 font-black uppercase tracking-widest italic">
                               Awaiting network trigger...
                             </div>
                           ) : (
@@ -334,12 +335,12 @@ export default function DashboardPage() {
                       </div>
                       <div className="space-y-6">
                           {payouts.length === 0 ? (
-                              <div className="p-16 text-center text-[10px] text-white/40 font-black uppercase tracking-[0.4em] card-premium">Zero transactions.</div>
+                              <div className="p-8 text-center text-[10px] text-white/40 font-black uppercase tracking-widest card-premium">Zero transactions.</div>
                           ) : (
                               payouts.slice(0, 4).map(p => (
                                   <div key={p.id} className="card-premium p-6 flex items-center justify-between group cursor-pointer border-b-2">
                                       <div className="flex items-center gap-6">
-                                          <div className="h-14 w-14 rounded-[1.5rem] bg-white/5/5 flex items-center justify-center group-hover:bg-white/5 text-[var(--color-accent)] group-hover:text-white transition-all duration-500">
+                                          <div className="h-14 w-14 rounded-xl bg-white/5/5 flex items-center justify-center group-hover:bg-white/5 text-[var(--color-accent)] group-hover:text-white transition-all duration-500">
                                               <span className="material-symbols-outlined text-2xl font-black">payments</span>
                                           </div>
                                           <div>
@@ -361,14 +362,14 @@ export default function DashboardPage() {
                     <ScoreGauge value={100 - capUsedPct} />
                     
                     {policy && (
-                        <section className="card-premium rounded-[3rem] p-10 shadow-2xl shadow-black/20 overflow-hidden relative text-white">
+                        <section className="card-premium rounded-3xl p-6 shadow-2xl shadow-black/20 overflow-hidden relative text-white">
                             <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/5/5 rounded-full blur-3xl"></div>
                             <div className="flex justify-between items-start mb-10 relative">
                                 <div className="space-y-2">
-                                    <p className="text-[10px] uppercase tracking-[0.3em] font-black text-white/40">Active Policy</p>
+                                    <p className="text-[10px] uppercase tracking-widest font-black text-white/40">Active Policy</p>
                                     <h2 className="text-4xl font-headline font-black leading-none">{tierLabel}</h2>
                                 </div>
-                                <span className="material-symbols-outlined text-white text-5xl opacity-40">shield</span>
+                                <span className="material-symbols-outlined text-white text-4xl opacity-40">shield</span>
                             </div>
                             <div className="grid grid-cols-2 gap-8 mb-10 relative">
                                 <div className="space-y-1">
@@ -398,11 +399,11 @@ export default function DashboardPage() {
                     )}
                     
                     {/* Flash Policies Widget */}
-                    <section className="bg-gradient-to-br from-white/10 to-white/5 rounded-[3rem] p-10 border border-white/10 shadow-xl relative overflow-hidden text-white mt-6">
+                    <section className="bg-gradient-to-br from-white/10 to-white/5 rounded-3xl p-6 border border-white/10 shadow-xl relative overflow-hidden text-white mt-6">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-accent)] opacity-10 rounded-full blur-2xl"></div>
                         <div className="flex justify-between items-start mb-6">
                             <div>
-                                <p className="text-[10px] uppercase tracking-[0.3em] font-black text-white/60 mb-2">Flash Coverage</p>
+                                <p className="text-[10px] uppercase tracking-widest font-black text-white/60 mb-2">Flash Coverage</p>
                                 <h3 className="text-2xl font-headline font-black leading-none">{activeShieldName}</h3>
                             </div>
                             <span className="material-symbols-outlined text-[var(--color-accent)] text-4xl">{activeIcon}</span>
@@ -443,19 +444,19 @@ export default function DashboardPage() {
             {activeTab === 'ledger' && worker && (
               <div className="space-y-12 pb-24">
                 {processing && (
-                  <div className="card-premium text-white rounded-[2.5rem] p-10 flex items-center gap-8 shadow-2xl animate-pulse">
+                  <div className="card-premium text-white rounded-2xl p-6 flex items-center gap-8 shadow-2xl animate-pulse">
                     <span className="material-symbols-outlined animate-spin text-4xl text-[var(--color-accent)]">sync</span>
                     <div>
-                      <p className="text-sm font-black uppercase tracking-[0.3em]">Processing Payout…</p>
+                      <p className="text-sm font-black uppercase tracking-widest">Processing Payout…</p>
                       <p className="text-[11px] text-white/60 font-bold uppercase tracking-[0.1em] mt-1">Verifying trigger events • Routing UPI payout</p>
                     </div>
                   </div>
                 )}
                 <ClaimsList workerId={worker.worker_id} refreshTrigger={refreshLedger} />
                 
-                <section className="p-10 mt-12 bg-white/5/5 rounded-[2.5rem] border-dashed border-white/10 relative overflow-hidden">
+                <section className="p-6 mt-12 bg-white/5/5 rounded-2xl border-dashed border-white/10 relative overflow-hidden">
                     <div className="flex items-center gap-6 mb-6 relative z-10">
-                        <div className="w-16 h-16 rounded-[2rem] bg-black/20 flex items-center justify-center text-[var(--color-accent)] shadow-xl">
+                        <div className="w-16 h-16 rounded-2xl bg-black/20 flex items-center justify-center text-[var(--color-accent)] shadow-xl">
                             <span className="material-symbols-outlined text-3xl font-black">verified</span>
                         </div>
                         <div>
@@ -489,12 +490,13 @@ export default function DashboardPage() {
                             className={`flex flex-col items-center justify-center transition-all px-8 ${activeTab === item.id ? 'text-[var(--color-accent)]' : 'text-white/60'}`}
                         >
                             <span className={`material-symbols-outlined mb-2 ${activeTab === item.id ? 'font-black scale-125' : ''}`} style={{fontSize: "28px"}}>{item.icon}</span>
-                            <span className="text-[9px] uppercase tracking-[0.3em] font-black">{item.label}</span>
+                            <span className="text-[9px] uppercase tracking-widest font-black">{item.label}</span>
                         </button>
                     ))}
                 </div>
             </nav>
         </div>
+        <AIAssistant />
     </div>
   )
 }

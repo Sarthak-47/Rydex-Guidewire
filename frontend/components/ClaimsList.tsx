@@ -38,14 +38,14 @@ export default function ClaimsList({ workerId, refreshTrigger }: ClaimsListProps
     return (
       <div className="py-20 flex flex-col items-center justify-center space-y-6">
         <div className="w-16 h-16 rounded-full border-4 border-white/20/10 border-t-[var(--color-accent)] animate-spin"></div>
-        <p className="text-[10px] font-black text-white/60 uppercase tracking-[0.4em]">Updating Registry...</p>
+        <p className="text-[10px] font-black text-white/60 uppercase tracking-widest">Updating Registry...</p>
       </div>
     )
   }
 
   if (claims.length === 0 && payouts.length === 0) {
     return (
-      <div className="py-24 px-10 text-center space-y-6 card-premium border-dashed">
+      <div className="py-24 px-6 text-center space-y-6 card-premium border-dashed">
         <div className="w-20 h-20 bg-[#060B19]/5 rounded-full mx-auto flex items-center justify-center text-white/40">
             <span className="material-symbols-outlined text-4xl">history</span>
         </div>
@@ -60,7 +60,7 @@ export default function ClaimsList({ workerId, refreshTrigger }: ClaimsListProps
   return (
     <div className="space-y-8 animate-in slide-in-from-bottom-8 duration-700">
       <div className="flex justify-between items-center px-4">
-        <h3 className="text-[11px] uppercase font-black tracking-[0.4em] text-white/60">Verification Log</h3>
+        <h3 className="text-[11px] uppercase font-black tracking-widest text-white/60">Verification Log</h3>
         <span className="text-[10px] font-black text-[var(--color-accent)] bg-black/20 px-4 py-1.5 rounded-full border border-white/10">
           {claims.length + payouts.length} RECORDS
         </span>
@@ -80,7 +80,7 @@ export default function ClaimsList({ workerId, refreshTrigger }: ClaimsListProps
               <div className="flex justify-between items-start relative z-10">
                 <div className="flex items-center gap-6">
                   <div
-                    className={`w-16 h-16 rounded-[1.5rem] flex items-center justify-center transition-all duration-500 group-hover:scale-110 ${
+                    className={`w-16 h-16 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 ${
                       claim.status === 'auto_approved' || claim.status === 'approved'
                         ? 'bg-[var(--color-accent)]/10 text-[var(--color-accent)]'
                         : claim.status === 'soft_hold'
@@ -109,7 +109,7 @@ export default function ClaimsList({ workerId, refreshTrigger }: ClaimsListProps
                         {(claim.status || 'processing').replace('_', ' ')}
                       </span>
                     </div>
-                    <p className="text-[10px] text-[var(--color-accent)]/60 font-black uppercase tracking-[0.2em]">
+                    <p className="text-[10px] text-[var(--color-accent)]/60 font-black uppercase tracking-wider">
                       {claim.created_at ? new Date(claim.created_at).toLocaleDateString('en-IN', {
                         day: '2-digit',
                         month: 'short',
@@ -122,7 +122,7 @@ export default function ClaimsList({ workerId, refreshTrigger }: ClaimsListProps
                   <p className="text-2xl font-black text-[var(--color-accent)] tracking-tighter group-hover:scale-105 transition-transform origin-right leading-none">
                     ₹{(claim.payout_amount_rs || 0).toLocaleString()}
                   </p>
-                  <p className="text-[10px] font-black text-[var(--color-accent)] flex items-center justify-end gap-2 mt-3 uppercase tracking-[0.2em]">
+                  <p className="text-[10px] font-black text-[var(--color-accent)] flex items-center justify-end gap-2 mt-3 uppercase tracking-wider">
                     <span className="material-symbols-outlined text-sm">security</span>
                     {Math.round(claim.as_score || 0)}% Integrity
                   </p>
@@ -132,7 +132,7 @@ export default function ClaimsList({ workerId, refreshTrigger }: ClaimsListProps
               <div className="mt-8 pt-6 border-t border-white/10 flex justify-between items-center relative z-10">
                 <div className="flex items-center gap-3">
                     <div className={`w-2.5 h-2.5 rounded-full ${claim.resolved_at ? 'bg-white/10' : 'bg-amber-400 animate-pulse'}`}></div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-accent)]/70">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-[var(--color-accent)]/70">
                       {claim.resolved_at ? 'Settlement Resolved' : 'Verification Pipeline'}
                     </span>
                 </div>
@@ -146,7 +146,7 @@ export default function ClaimsList({ workerId, refreshTrigger }: ClaimsListProps
       {payouts.length > 0 && (
         <div className="pt-10 space-y-6">
           <div className="flex justify-between items-center px-4">
-            <h3 className="text-[11px] uppercase font-black tracking-[0.4em] text-white/60">Settlement Stream</h3>
+            <h3 className="text-[11px] uppercase font-black tracking-widest text-white/60">Settlement Stream</h3>
             <span className="text-[10px] font-black text-[var(--color-accent)] bg-black/20 px-4 py-1.5 rounded-full border border-white/10">
               {payouts.length} UNITS
             </span>
@@ -161,7 +161,7 @@ export default function ClaimsList({ workerId, refreshTrigger }: ClaimsListProps
                 
                 <div className="flex flex-wrap sm:flex-nowrap justify-between items-center relative z-10 gap-6">
                   <div className="flex items-center gap-6">
-                    <div className="w-16 h-16 rounded-[1.5rem] bg-[var(--color-accent)]/10 text-[var(--color-accent)] flex items-center justify-center transition-all duration-500 group-hover:scale-110">
+                    <div className="w-16 h-16 rounded-xl bg-[var(--color-accent)]/10 text-[var(--color-accent)] flex items-center justify-center transition-all duration-500 group-hover:scale-110">
                         <span className="material-symbols-outlined text-3xl font-black">payments</span>
                     </div>
                     <div>
@@ -175,14 +175,14 @@ export default function ClaimsList({ workerId, refreshTrigger }: ClaimsListProps
                           {p.status}
                         </span>
                       </div>
-                      <p className="text-[10px] text-[var(--color-accent)]/60 font-black uppercase tracking-[0.2em] flex items-center gap-2">
+                      <p className="text-[10px] text-[var(--color-accent)]/60 font-black uppercase tracking-wider flex items-center gap-2">
                         <span className="material-symbols-outlined text-sm">qr_code_2</span>
                         {p.upi_ref || 'PENDING_SIG_AUTH'}
                       </p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-[11px] font-black text-[var(--color-accent)] uppercase tracking-[0.2em] leading-none">
+                    <p className="text-[11px] font-black text-[var(--color-accent)] uppercase tracking-wider leading-none">
                       v3.0 Secure • {p.latency_seconds ?? 0}ms
                     </p>
                     <p className="text-[10px] text-[var(--color-accent)]/60 mt-3 uppercase font-black tracking-widest">

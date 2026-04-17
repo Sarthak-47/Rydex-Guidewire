@@ -11,6 +11,7 @@ import MLScatterPlot from '@/components/MLScatterPlot'
 import BlockchainLedger from '@/components/BlockchainLedger'
 // Phase 3 analytics panels
 import { LossRatioPanel, FraudRingsPanel, SyndicateAlertQueue, ForecastPanel } from '@/components/AdminPhase3'
+import AIAssistant from '@/components/AIAssistant'
 
 interface AdminClaim extends Claim {
   worker_name?: string
@@ -163,11 +164,11 @@ export default function AdminPage() {
         <div className="flex items-center justify-center h-[88px] border-b border-white/10">
             <img src="/rydex_dynamic_logo.png" alt="Rydex Logo" style={{ width: '285px', height: 'auto', objectFit: 'contain' }} />
         </div>
-        <div className="px-8 py-10 border-b border-white/10 bg-black/10">
+        <div className="px-8 py-6 border-b border-white/10 bg-black/10">
             <p className="text-white/40 font-bold uppercase tracking-widest text-[10px] mb-2">Total Disbursed</p>
             <p className="text-4xl font-black text-[var(--color-accent)] font-mono leading-none tracking-tighter">₹{totalPaid.toLocaleString()}</p>
         </div>
-        <nav className="flex-1 px-4 py-10 space-y-3">
+        <nav className="flex-1 overflow-y-auto px-4 py-6 space-y-3 no-scrollbar">
             {[
                 { id: 'feed', icon: 'analytics', label: 'Monitor' },
                 { id: 'map', icon: 'map', label: 'Risk Map' },
@@ -181,24 +182,24 @@ export default function AdminPage() {
                 <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-[1.5rem] transition-all duration-300 ${
+                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl transition-all duration-300 ${
                         activeTab === tab.id 
                         ? 'bg-[var(--color-accent)] text-white shadow-xl shadow-[var(--color-accent)]/20' 
                         : 'text-white/40 hover:text-[var(--color-accent)] hover:bg-white/5/5'
                     }`}
                 >
                     <span className="material-symbols-outlined">{tab.icon}</span>
-                    <span className="text-[10px] tracking-[0.2em] font-black uppercase">{tab.label}</span>
+                    <span className="text-xs tracking-wider font-bold uppercase">{tab.label}</span>
                 </button>
             ))}
         </nav>
-        <div className="p-6 border-t border-white/10 bg-black/10">
+        <div className="p-6 border-t border-white/10 bg-black/20 mt-auto">
             <button 
                 onClick={logout}
-                className="w-full flex items-center justify-center gap-3 px-4 py-4 rounded-xl border border-red-500/20 text-[10px] font-black uppercase tracking-widest text-red-600 hover:bg-red-50 transition-all"
+                className="w-full btn-danger py-4"
             >
-                <span className="material-symbols-outlined text-sm">logout</span>
-                Sign Out
+                <span className="material-symbols-outlined text-lg">logout</span>
+                Logout
             </button>
         </div>
       </aside>
@@ -212,37 +213,37 @@ export default function AdminPage() {
             <button onClick={logout} className="text-white hover:text-[var(--color-accent)]"><span className="material-symbols-outlined">logout</span></button>
         </header>
 
-        <main className="pb-32 pt-16 md:pt-16 px-6 md:px-12 max-w-7xl w-full mx-auto">
+        <main className="pb-32 pt-16 md:pt-16 px-6 md:px-8 max-w-7xl w-full mx-auto">
             {activeTab === 'feed' && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
-                    <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+                    <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
                         {/* Simulation Engine */}
                         <div className="xl:col-span-8 space-y-12">
                             <section>
-                                <h1 className="text-5xl font-headline font-black tracking-tighter mb-4 uppercase">Admin Dashboard</h1>
+                                <h1 className="text-4xl font-headline font-black tracking-tighter mb-4 uppercase">Admin Dashboard</h1>
                                 <div className="flex items-center gap-3">
                                     <div className="flex items-center gap-2 bg-black/20 px-5 py-2 rounded-full border border-white/10 shadow-sm">
                                       <span className="animate-pulse h-2 w-2 rounded-full bg-[var(--color-accent)]"></span>
-                                      <span className="text-[10px] font-black text-[var(--color-accent)] uppercase tracking-[0.3em]">System Online</span>
+                                      <span className="text-[10px] font-black text-[var(--color-accent)] uppercase tracking-widest">System Online</span>
                                     </div>
                                     <span className="badge-premium">{activeNodesCount} Active Workers</span>
                                 </div>
                             </section>
 
-                            <section className="card-premium text-white rounded-[3.5rem] p-12 border border-white/10 shadow-2xl space-y-10">
+                            <section className="card-premium text-white rounded-3xl p-8 border border-white/10 shadow-2xl space-y-10">
                                 <div className="flex items-center justify-between">
-                                    <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-white/40">Disruption Simulator</h4>
+                                    <h4 className="text-[11px] font-black uppercase tracking-widest text-white/40">Disruption Simulator</h4>
                                     <span className="material-symbols-outlined text-white/20">psychology</span>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                                     <div className="space-y-4">
-                                        <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-2">Select Zone</label>
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-2">Select Zone</label>
                                         <select value={triggerZone} onChange={(e) => setTriggerZone(e.target.value)} className="input-premium appearance-none cursor-pointer pr-14 !font-sans !font-black !text-sm !uppercase !tracking-widest">
                                            {ZONES.map((z) => (<option key={z.id} value={z.id}>{z.label}</option>))}
                                         </select>
                                     </div>
                                     <div className="space-y-4">
-                                        <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 ml-2">Trigger Type</label>
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-2">Trigger Type</label>
                                         <select value={triggerType} onChange={(e) => setTriggerType(e.target.value)} className="input-premium appearance-none cursor-pointer pr-14 !font-sans !font-black !text-sm !uppercase !tracking-widest">
                                            {TRIGGERS.map((t) => (<option key={t.value} value={t.value}>{t.label}</option>))}
                                         </select>
@@ -264,7 +265,7 @@ export default function AdminPage() {
                                 </div>
                                 
                                 <div className="pt-10 border-t border-white/10">
-                                     <div className="grid grid-cols-3 gap-10">
+                                     <div className="grid grid-cols-3 gap-6">
                                          <div>
                                              <p className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-2">Confidence</p>
                                              <p className="text-2xl font-black font-mono text-white">{avgConfidence}%</p>
@@ -284,13 +285,13 @@ export default function AdminPage() {
 
                         {/* Network Stats Sidebar */}
                         <div className="xl:col-span-4 space-y-10">
-                             <div className="card-premium rounded-[3rem] p-10 text-white shadow-2xl shadow-black/20 relative overflow-hidden">
+                             <div className="card-premium rounded-3xl p-6 text-white shadow-2xl shadow-black/20 relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5/5 rounded-full blur-3xl"></div>
-                                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-10">Stats Overview</p>
+                                <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-10">Stats Overview</p>
                                 <div className="space-y-12">
                                     <div>
-                                        <p className="text-5xl font-black font-headline tracking-tighter leading-none mb-4">₹{totalPaid.toLocaleString()}</p>
-                                        <p className="text-[11px] uppercase font-black text-white/40 tracking-[0.2em]">Total Payouts</p>
+                                        <p className="text-4xl font-black font-headline tracking-tighter leading-none mb-4">₹{totalPaid.toLocaleString()}</p>
+                                        <p className="text-[11px] uppercase font-black text-white/40 tracking-wider">Total Payouts</p>
                                     </div>
                                     <div className="space-y-4">
                                          <div className="flex justify-between text-[11px] font-black uppercase tracking-widest text-white/60">
@@ -304,8 +305,8 @@ export default function AdminPage() {
                                 </div>
                              </div>
 
-                             <div className="card-premium rounded-[3rem] p-10 text-white shadow-2xl shadow-black/20 relative overflow-hidden mt-10">
-                                <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-8 italic">Anomaly Detection Distribution</h4>
+                             <div className="card-premium rounded-3xl p-6 text-white shadow-2xl shadow-black/20 relative overflow-hidden mt-10">
+                                <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-8 italic">Anomaly Detection Distribution</h4>
                                 <div className="flex items-end gap-6 h-40 px-2 border-b border-white/10 pb-4">
                                     {asBuckets.map((b, i) => (
                                         <div key={b.label} className="flex-1 flex flex-col justify-end items-center h-full group">
@@ -332,7 +333,7 @@ export default function AdminPage() {
                             {claims.length === 0 ? (
                                 <div className="col-span-full py-32 text-center card-premium bg-transparent border-dashed">
                                      <span className="material-symbols-outlined text-[var(--color-accent)]/10 text-8xl mb-8">security</span>
-                                     <p className="text-muted tracking-[0.5em]">Synchronizing Network Streams...</p>
+                                     <p className="text-muted tracking-widest">Synchronizing Network Streams...</p>
                                 </div>
                             ) : (
                                 [...claims].reverse().slice(0, 16).map((c) => {
@@ -347,7 +348,7 @@ export default function AdminPage() {
                                           animate={{ opacity: 1, scale: 1 }}
                                           key={c.id} 
                                           onClick={() => setSelectedClaim(c)}
-                                          className={`group p-8 card-premium text-white rounded-[2.5rem] border border-white/20 shadow-xl transition-all hover:shadow-2xl hover:shadow-black/40 cursor-pointer relative overflow-hidden ${isRecent ? 'ring-4 ring-[var(--color-accent)]/80 scale-[1.02] shadow-2xl z-10' : ''}`}
+                                          className={`group p-8 card-premium text-white rounded-2xl border border-white/20 shadow-xl transition-all hover:shadow-2xl hover:shadow-black/40 cursor-pointer relative overflow-hidden ${isRecent ? 'ring-4 ring-[var(--color-accent)]/80 scale-[1.02] shadow-2xl z-10' : ''}`}
                                         >
                                             <div className="flex justify-between items-start mb-8">
                                                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${scoreBg} ${scoreCol} transition-transform group-hover:scale-110`}>
@@ -358,7 +359,7 @@ export default function AdminPage() {
                                                     <p className="text-[10px] font-black text-white/40 uppercase mt-2">Audit-v3</p>
                                                 </div>
                                             </div>
-                                            <h5 className="text-[12px] font-black uppercase tracking-[0.2em] mb-8 truncate text-white/80 group-hover:text-[var(--color-accent)] transition-colors">
+                                            <h5 className="text-[12px] font-black uppercase tracking-wider mb-8 truncate text-white/80 group-hover:text-[var(--color-accent)] transition-colors">
                                                 {c.worker_name || `RID-${c.id.substring(0,6).toUpperCase()}`}
                                             </h5>
                                             <div className="flex items-center justify-between pt-6 border-t border-white/10">
@@ -381,17 +382,17 @@ export default function AdminPage() {
               <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="space-y-12">
                    <div className="flex justify-between items-end px-4">
                       <div className="space-y-3">
-                          <h2 className="text-5xl font-headline font-black text-on-background tracking-tighter uppercase leading-none">Global Risk Map</h2>
+                          <h2 className="text-4xl font-headline font-black text-on-background tracking-tighter uppercase leading-none">Global Risk Map</h2>
                           <p className="text-muted">Real-time trigger monitoring and localization</p>
                       </div>
-                      <div className="badge-premium px-10 py-3 shadow-xl">
+                      <div className="badge-premium px-6 py-3 shadow-xl">
                          Admin Ops v0.4
                       </div>
                    </div>
-                   <div className="rounded-[4rem] overflow-hidden shadow-2xl shadow-[#1B4332]/10 border border-white/10 h-[700px]">
+                   <div className="rounded-3xl overflow-hidden shadow-2xl shadow-[#1B4332]/10 border border-white/10 h-[700px]">
                       <TriggerMap recentClaims={claims} />
                    </div>
-                   <div className="card-premium p-10 flex flex-wrap gap-10 items-center justify-between bg-white/5/5 border-dashed border-white/10">
+                   <div className="card-premium p-6 flex flex-wrap gap-6 items-center justify-between bg-white/5/5 border-dashed border-white/10">
                       <div className="flex items-center gap-6">
                          <div className="w-16 h-16 rounded-3xl card-premium flex items-center justify-center text-white shadow-xl">
                             <span className="material-symbols-outlined text-3xl font-black">hub</span>
@@ -472,6 +473,7 @@ export default function AdminPage() {
             )}
         </main>
       </div>
+      <AIAssistant />
     </div>
   )
 }

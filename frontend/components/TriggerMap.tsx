@@ -15,13 +15,13 @@ const MapWrapper = dynamic(() => import("./MapContent"), {
 
 export default function TriggerMap({ recentClaims = [] }: { recentClaims?: any[] }) {
   return (
-    <div className="h-[500px] w-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl relative z-10 group bg-white/5">
+    <div className="h-[500px] w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative z-10 group bg-white/5">
       <MapWrapper recentClaims={recentClaims} />
       
       {/* Visual Overlays */}
       <div className="absolute top-8 right-8 z-[1000] flex flex-col gap-3">
-        <div className="bg-white/5/90 backdrop-blur-xl p-6 rounded-[2rem] border border-white/10 shadow-2xl">
-          <h5 className="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-accent)] mb-4">Legend</h5>
+        <div className="bg-white/5/90 backdrop-blur-xl p-6 rounded-2xl border border-white/10 shadow-2xl">
+          <h5 className="text-[10px] font-black uppercase tracking-wider text-[var(--color-accent)] mb-4">Legend</h5>
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-white/10"></div>
@@ -34,7 +34,7 @@ export default function TriggerMap({ recentClaims = [] }: { recentClaims?: any[]
           </div>
         </div>
         <div className="bg-white/10 text-white px-5 py-3 rounded-2xl flex items-center justify-center shadow-xl">
-           <span className="text-[9px] font-black uppercase tracking-[0.4em]">Mumbai Metro Area</span>
+           <span className="text-[9px] font-black uppercase tracking-widest">Mumbai Metro Area</span>
         </div>
       </div>
     </div>

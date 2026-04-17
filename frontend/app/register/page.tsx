@@ -143,7 +143,7 @@ export default function RegisterPage() {
 
   return (
     <div className="bg-background text-on-background font-body min-h-screen pb-32">
-        <header className="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-10 h-[88px]">
+        <header className="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-6 h-[88px]">
             <div className="flex items-center">
                 <img src="/rydex_dynamic_logo.png" alt="Rydex Logo" style={{ width: '285px', height: 'auto', objectFit: 'contain' }} />
             </div>
@@ -152,7 +152,7 @@ export default function RegisterPage() {
 
         <main className="pt-40 pb-12 px-6 max-w-2xl mx-auto">
             {/* Progress Pattern */}
-            <div className="flex items-center justify-between mb-20 px-10">
+            <div className="flex items-center justify-between mb-20 px-6">
                 {[
                     { id: 1, label: 'Identity', active: step === 'phone' || step === 'otp' || step === 'profile' || step === 'done' },
                     { id: 2, label: 'Analysis', active: step === 'profile' || step === 'done' },
@@ -161,7 +161,7 @@ export default function RegisterPage() {
                     <Fragment key={s.id}>
                         <div className="flex flex-col items-center gap-4">
                             <div className={`w-12 h-12 rounded-2xl ${s.active ? 'bg-[var(--color-accent)] text-white shadow-xl shadow-[var(--color-accent)]/20' : 'bg-white/5 text-white/40'} flex items-center justify-center font-black text-xs transition-all duration-700`}>{s.id}</div>
-                            <span className={`text-[9px] uppercase tracking-[0.2em] font-black ${s.active ? 'text-[var(--color-accent)]' : 'text-white/40'}`}>{s.label}</span>
+                            <span className={`text-[9px] uppercase tracking-wider font-black ${s.active ? 'text-[var(--color-accent)]' : 'text-white/40'}`}>{s.label}</span>
                         </div>
                         {i < 2 && <div className={`h-[2px] flex-1 ${s.active && (i === 0 ? step !== 'phone' && step !== 'otp' : step === 'done') ? 'bg-[var(--color-accent)]' : 'bg-white/5'} mx-6 mb-10 transition-all duration-700`}></div>}
                     </Fragment>
@@ -177,9 +177,9 @@ export default function RegisterPage() {
                 >
                     <div className="space-y-4 text-center">
                         <h1 className="text-6xl font-headline font-black tracking-tighter text-on-background uppercase leading-none">Identity.</h1>
-                        <p className="text-[var(--color-accent)] text-xs font-black uppercase tracking-[0.4em] leading-relaxed">Enter your phone number to begin</p>
+                        <p className="text-[var(--color-accent)] text-xs font-black uppercase tracking-widest leading-relaxed">Enter your phone number to begin</p>
                     </div>
-                    <form onSubmit={step === 'phone' ? handleSendOtp : handleVerifyOtp} className="card-premium p-12 space-y-10">
+                    <form onSubmit={step === 'phone' ? handleSendOtp : handleVerifyOtp} className="card-premium p-8 space-y-10">
                         {step === 'phone' && (
                             <>
                                 <div className="space-y-4">
@@ -197,12 +197,12 @@ export default function RegisterPage() {
                                 <button type="submit" className="btn-primary w-full h-20 shadow-2xl">
                                     Send OTP
                                 </button>
-                                <p className="text-center text-[10px] text-white/60 mt-4 font-black uppercase tracking-[0.4em]">Already a node? <Link href="/login" className="text-[var(--color-accent)] hover:underline decoration-2 underline-offset-4">Sign in</Link></p>
+                                <p className="text-center text-[10px] text-white/60 mt-4 font-black uppercase tracking-widest">Already a node? <Link href="/login" className="text-[var(--color-accent)] hover:underline decoration-2 underline-offset-4">Sign in</Link></p>
                             </>
                         )}
                         {step === 'otp' && (
                             <>
-                                <button type="button" onClick={() => setStep('phone')} className="flex items-center text-[10px] font-black text-white/60 hover:text-[var(--color-accent)] mb-6 uppercase tracking-[0.3em] transition-colors"><span className="material-symbols-outlined mr-3 text-sm">arrow_back</span>Correction</button>
+                                <button type="button" onClick={() => setStep('phone')} className="flex items-center text-[10px] font-black text-white/60 hover:text-[var(--color-accent)] mb-6 uppercase tracking-widest transition-colors"><span className="material-symbols-outlined mr-3 text-sm">arrow_back</span>Correction</button>
                                 <div className="space-y-6">
                                     <label className="text-muted ml-2 text-center block">Enter OTP</label>
                                     <input 
@@ -212,7 +212,7 @@ export default function RegisterPage() {
                                         placeholder="------"
                                         value={otp} onChange={(e) => setOtp(e.target.value)} required 
                                     />
-                                    <p className="text-center text-[10px] text-white/60 font-black uppercase tracking-[0.3em]">Code routed to +91 {phone} <br/> <span className="text-[var(--color-accent)]/80 mt-1 block">DEMO OVERRIDE: 123456</span></p>
+                                    <p className="text-center text-[10px] text-white/60 font-black uppercase tracking-widest">Code routed to +91 {phone} <br/> <span className="text-[var(--color-accent)]/80 mt-1 block">DEMO OVERRIDE: 123456</span></p>
                                 </div>
                                 {error && <p className="text-[10px] font-black text-red-600 uppercase tracking-widest text-center bg-red-50 py-4 rounded-xl border border-red-100">{error}</p>}
                                 <button disabled={loading} type="submit" className="btn-primary w-full h-20 shadow-2xl">
@@ -232,9 +232,9 @@ export default function RegisterPage() {
                 >
                     <div className="space-y-4 text-center">
                         <h2 className="text-6xl font-headline font-black tracking-tighter text-on-background uppercase leading-none">Details.</h2>
-                        <p className="text-[var(--color-accent)] text-xs font-black uppercase tracking-[0.4em] block leading-relaxed">Setup your protection profile</p>
+                        <p className="text-[var(--color-accent)] text-xs font-black uppercase tracking-widest block leading-relaxed">Setup your protection profile</p>
                     </div>
-                    <form onSubmit={handleRegister} className="card-premium p-12 space-y-12">
+                    <form onSubmit={handleRegister} className="card-premium p-8 space-y-12">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                             <div className="space-y-4">
                                 <label className="text-muted ml-2">Full Name</label>
@@ -246,10 +246,10 @@ export default function RegisterPage() {
                             </div>
                         </div>
 
-                        <div className="space-y-10 bg-white/5 p-10 rounded-[2.5rem] border border-white/10 shadow-inner">
+                        <div className="space-y-10 bg-white/5 p-6 rounded-2xl border border-white/10 shadow-inner">
                             <div className="space-y-5">
                                 <div className="flex justify-between items-center px-2">
-                                    <span className="text-[10px] font-black text-white/90 uppercase tracking-[0.2em] text-white/60">Working Hours</span>
+                                    <span className="text-[10px] font-black text-white/90 uppercase tracking-wider text-white/60">Working Hours</span>
                                     <span className="badge-premium px-6 py-2">{workingHours} hrs/day</span>
                                 </div>
                                 <input 
@@ -260,7 +260,7 @@ export default function RegisterPage() {
                             </div>
                             <div className="space-y-5">
                                 <div className="flex justify-between items-center px-2">
-                                    <span className="text-[10px] font-black text-white/90 uppercase tracking-[0.2em] text-white/60">Average Orders</span>
+                                    <span className="text-[10px] font-black text-white/90 uppercase tracking-wider text-white/60">Average Orders</span>
                                     <span className="badge-premium px-6 py-2">{avgOrders} orders/day</span>
                                 </div>
                                 <input 
@@ -279,7 +279,7 @@ export default function RegisterPage() {
                                         type="button" 
                                         key={p.value} 
                                         onClick={() => setPlatform(p.value)} 
-                                        className={`flex-1 py-5 rounded-2xl text-[10px] font-black text-white/90 uppercase tracking-[0.3em] transition-all border-2 ${platform === p.value ? 'card-premium text-white border-[var(--color-primary)] shadow-xl shadow-black/20' : 'bg-white/5 text-white/40 border-white/10 hover:border-[var(--color-primary)]/50'}`}
+                                        className={`flex-1 py-5 rounded-2xl text-[10px] font-black text-white/90 uppercase tracking-widest transition-all border-2 ${platform === p.value ? 'card-premium text-white border-[var(--color-primary)] shadow-xl shadow-black/20' : 'bg-white/5 text-white/40 border-white/10 hover:border-[var(--color-primary)]/50'}`}
                                     >
                                         {p.label}
                                     </button>
@@ -340,16 +340,16 @@ export default function RegisterPage() {
                 >
                     <div className="space-y-4 text-center">
                         <h2 className="text-6xl font-headline font-black tracking-tighter text-on-background uppercase leading-none">Quote.</h2>
-                        <p className="text-[var(--color-accent)] text-xs font-black uppercase tracking-[0.4em] leading-relaxed">Review your custom coverage plan</p>
+                        <p className="text-[var(--color-accent)] text-xs font-black uppercase tracking-widest leading-relaxed">Review your custom coverage plan</p>
                     </div>
 
                     <div className="card-premium p-1 relative overflow-hidden group">
                         <div className="absolute top-0 left-0 w-full h-3 card-premium"></div>
                         
-                        <div className="p-12 space-y-12">
+                        <div className="p-8 space-y-12">
                             {/* Analytics Section */}
-                            <div className="bg-[#10162A]/50 p-10 rounded-[3rem] border border-[var(--color-primary)]/10 space-y-8">
-                                <div className="flex justify-between items-center text-[10px] font-black text-white/90 uppercase tracking-[0.4em]">
+                            <div className="bg-[#10162A]/50 p-6 rounded-3xl border border-[var(--color-primary)]/10 space-y-8">
+                                <div className="flex justify-between items-center text-[10px] font-black text-white/90 uppercase tracking-widest">
                                     <span className="text-[var(--color-accent)]">Risk Assessment Score</span>
                                     <span className="card-premium text-white px-5 py-2 rounded-full shadow-lg">Verified Plan</span>
                                 </div>
@@ -370,8 +370,8 @@ export default function RegisterPage() {
                                 </div>
                             </div>
 
-                            <div className="space-y-8 bg-white/5 p-10 rounded-[2.5rem] border border-white/10 shadow-sm">
-                                <h3 className="text-[11px] font-black uppercase tracking-[0.5em] text-[var(--color-accent)] flex items-center gap-4">
+                            <div className="space-y-8 bg-white/5 p-6 rounded-2xl border border-white/10 shadow-sm">
+                                <h3 className="text-[11px] font-black uppercase tracking-widest text-[var(--color-accent)] flex items-center gap-4">
                                     <span className="w-2.5 h-2.5 rounded-full card-premium animate-pulse"></span>
                                     Policy Summary
                                 </h3>
@@ -392,13 +392,13 @@ export default function RegisterPage() {
 
                             <div className="pt-4 flex justify-between items-end border-t-2 border-white/10">
                                 <div>
-                                    <p className="text-[10px] font-black text-white/90 uppercase tracking-[0.4em] text-[var(--color-accent)] mb-3">Weekly Premium</p>
+                                    <p className="text-[10px] font-black text-white/90 uppercase tracking-widest text-[var(--color-accent)] mb-3">Weekly Premium</p>
                                     <p className="text-[11px] text-white/60 font-black uppercase tracking-widest">Automatic Payout Calculation</p>
                                 </div>
                                 <span className="text-6xl font-black font-headline text-[var(--color-accent)] tracking-tighter leading-none">₹{result.policy?.weekly_premium_rs || 24}</span>
                             </div>
 
-                            <button onClick={handleGoToDashboard} disabled={loading} className="btn-primary w-full h-24 text-sm tracking-[0.4em] shadow-[0_20px_50px_rgba(27,67,50,0.3)]">
+                            <button onClick={handleGoToDashboard} disabled={loading} className="btn-primary w-full h-24 text-sm tracking-widest shadow-[0_20px_50px_rgba(27,67,50,0.3)]">
                                 {loading ? <span className="material-symbols-outlined animate-spin font-bold">sync</span> : <>ACTIVATE POLICY</>}
                             </button>
                         </div>

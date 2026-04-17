@@ -19,25 +19,25 @@ export default function BlockchainLedger({ payouts = [] }: { payouts?: any[] }) 
   }));
 
   return (
-    <div className="bg-[var(--color-surface)] text-white border border-white/10 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col font-body text-sm max-h-[600px]">
-      <div className="bg-white/5 px-10 py-6 border-b border-white/10 flex justify-between items-center">
-        <h3 className="text-[var(--color-accent)] font-black uppercase tracking-[0.3em] text-[11px] flex items-center gap-4">
+    <div className="bg-[var(--color-surface)] text-white border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col font-body text-sm max-h-[600px]">
+      <div className="bg-white/5 px-6 py-6 border-b border-white/10 flex justify-between items-center">
+        <h3 className="text-[var(--color-accent)] font-black uppercase tracking-widest text-[11px] flex items-center gap-4">
           <div className="relative">
             <div className="w-2.5 h-2.5 rounded-full card-premium"></div>
             <div className="absolute inset-0 w-2.5 h-2.5 rounded-full card-premium animate-ping opacity-30"></div>
           </div>
           Payout Records
         </h3>
-        <span className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em] bg-black/5 px-4 py-1.5 rounded-full">Secure Records</span>
+        <span className="text-white/40 text-[10px] font-black uppercase tracking-wider bg-black/5 px-4 py-1.5 rounded-full">Secure Records</span>
       </div>
       
-      <div className="overflow-y-auto flex-1 p-10 flex flex-col gap-5 no-scrollbar bg-[var(--color-surface)]">
+      <div className="overflow-y-auto flex-1 p-6 flex flex-col gap-5 no-scrollbar bg-[var(--color-surface)]">
         {ledgerData.length === 0 ? (
           <div className="text-center py-24 flex flex-col items-center gap-6">
             <div className="w-20 h-20 bg-black/5 rounded-full flex items-center justify-center text-[var(--color-accent)]/20">
                 <span className="material-symbols-outlined text-4xl">sync</span>
             </div>
-            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-white/40">Waiting for payouts...</p>
+            <p className="text-[11px] font-black uppercase tracking-widest text-white/40">Waiting for payouts...</p>
           </div>
         ) : (
           ledgerData.map((p, index) => (
@@ -52,26 +52,26 @@ export default function BlockchainLedger({ payouts = [] }: { payouts?: any[] }) 
               
               {/* Transaction ID & Status */}
               <div className="flex-1 flex flex-col gap-2 min-w-[220px] mb-4 md:mb-0">
-                <span className="text-white/60 font-black text-[9px] uppercase tracking-[0.2em] leading-none">Transaction ID</span>
+                <span className="text-white/60 font-black text-[9px] uppercase tracking-wider leading-none">Transaction ID</span>
                 <span className="text-[var(--color-accent)] font-mono text-[12px] font-black tracking-tight truncate">#{p.mockHash.substring(0, 20)}</span>
               </div>
 
               {/* Payout Amount */}
               <div className="flex-1 flex flex-col gap-2 min-w-[150px] mb-4 md:mb-0">
-                <span className="text-white/60 font-black text-[9px] uppercase tracking-[0.2em] leading-none">Amount</span>
+                <span className="text-white/60 font-black text-[9px] uppercase tracking-wider leading-none">Amount</span>
                 <span className="text-white text-xl font-black font-headline tracking-tighter leading-none">₹{(p.amount_rs || 0).toLocaleString()}</span>
               </div>
 
               {/* Reference ID */}
               <div className="flex-1 flex flex-col gap-2 min-w-[200px] hidden lg:flex">
-                <span className="text-white/60 font-black text-[9px] uppercase tracking-[0.2em] leading-none">Reference</span>
+                <span className="text-white/60 font-black text-[9px] uppercase tracking-wider leading-none">Reference</span>
                 <span className="text-white/80 font-black text-[11px] font-mono leading-none">{p.upi_ref || 'SIG_PENDING'}</span>
               </div>
 
               {/* Status & Speed */}
               <div className="flex items-center gap-6">
                 <div className="flex flex-col items-end gap-2 hidden sm:flex text-right">
-                    <span className="text-white/60 font-black text-[9px] uppercase tracking-[0.2em] leading-none">Speed</span>
+                    <span className="text-white/60 font-black text-[9px] uppercase tracking-wider leading-none">Speed</span>
                     <span className="text-[var(--color-accent)] font-black text-[12px] font-mono tracking-tighter leading-none">{p.latency_seconds}ms</span>
                 </div>
                 <div className={`px-6 py-2.5 rounded-full text-[10px] font-black border tracking-widest shadow-sm min-w-[100px] text-center transition-all duration-500 ${p.status === 'success' ? 'card-premium text-white border-transparent' : 'bg-black/10 text-white/40 border-black/5'}`}>
@@ -82,7 +82,7 @@ export default function BlockchainLedger({ payouts = [] }: { payouts?: any[] }) 
           ))
         )}
       </div>
-      <div className="px-10 py-4 bg-white/5 border-t border-white/10 flex justify-between items-center text-[9px] font-black uppercase tracking-[0.4em] text-white/40">
+      <div className="px-6 py-4 bg-white/5 border-t border-white/10 flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-white/40">
           <span>Auto-Sync Active</span>
           <span>Zone 4</span>
       </div>

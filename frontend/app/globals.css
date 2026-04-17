@@ -16,46 +16,46 @@
 @layer components {
   /* Pattern: Premium Card (Midnight Glassmorphism) */
   .card-premium {
-    @apply bg-[#10162A] border border-[#2A344A] text-[#F8FAFC] rounded-[2rem] shadow-[0_12px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-500 hover:bg-[#151D36] hover:border-[#384661];
+    @apply bg-[#10162A] border border-[#2A344A] text-[#F8FAFC] rounded-2xl shadow-lg transition-all duration-500 hover:bg-[#151D36] hover:border-[#384661];
   }
 
   /* Pattern: Main Action Button (Emerald) */
   .btn-primary {
-    @apply bg-[var(--color-accent)] text-[#022A1E] rounded-xl px-8 py-4 font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)];
+    @apply bg-[var(--color-accent)] text-[#022A1E] rounded-xl px-6 py-3 font-semibold text-sm transition-all duration-300 hover:bg-[#059669] shadow-md;
   }
 
   /* Pattern: Accent Button - Unified to Emerald as well! */
   .btn-accent {
-    @apply bg-[var(--color-accent)] text-[#022A1E] rounded-xl px-8 py-4 font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)];
+    @apply bg-[var(--color-accent)] text-[#022A1E] rounded-xl px-6 py-3 font-semibold text-sm transition-all duration-300 hover:bg-[#059669] shadow-md;
   }
 
   /* Pattern: Secondary Button (Outline) */
   .btn-secondary {
-    @apply bg-transparent text-[#F8FAFC] border-[1.5px] border-[#2A344A] rounded-xl px-8 py-4 font-black uppercase tracking-widest text-[11px] transition-all duration-300 hover:border-[#384661] hover:bg-[#151D36] active:scale-[0.98];
+    @apply bg-transparent text-[#F8FAFC] border border-[#2A344A] rounded-xl px-6 py-3 font-semibold text-sm transition-all duration-300 hover:border-[#384661] hover:bg-[#151D36];
   }
 
   /* Pattern: Danger Button */
   .btn-danger {
-    @apply bg-red-500/10 text-red-500 border border-red-500/20 rounded-xl px-8 py-4 font-black uppercase tracking-widest text-[11px] transition-all hover:bg-red-500 hover:text-white shadow-lg flex items-center justify-center gap-3;
+    @apply bg-red-500/10 text-red-500 border border-red-500/20 rounded-xl px-6 py-3 font-semibold text-sm transition-all hover:bg-red-500 hover:text-white shadow-sm flex items-center justify-center gap-2;
   }
 
   /* Pattern: Form Inputs */
   .input-premium {
-    @apply w-full px-8 py-5 bg-[#0C1222] border border-[#2A344A] rounded-xl focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent focus:outline-none font-mono text-lg transition-all text-[#F8FAFC] placeholder:text-[#64748B];
+    @apply w-full px-4 py-3 bg-[#0C1222] border border-[#2A344A] rounded-xl focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent focus:outline-none font-mono text-sm transition-all text-[#F8FAFC] placeholder:text-[#64748B];
   }
 
   /* Pattern: Typography */
   .text-title {
-    @apply font-headline font-black text-[#F8FAFC] tracking-tighter uppercase;
+    @apply font-headline font-bold text-[#F8FAFC] tracking-tight uppercase;
   }
 
   .text-muted {
-    @apply text-[#94A3B8] font-black uppercase tracking-widest text-[10px];
+    @apply text-[#94A3B8] font-semibold text-xs;
   }
 
   /* Pattern: Tag/Badge */
   .badge-premium {
-    @apply px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-[#2A344A] bg-[#151D36] text-[#E2E8F0] shadow-sm;
+    @apply px-3 py-1 rounded-md text-xs font-semibold border border-[#2A344A] bg-[#151D36] text-[#E2E8F0] shadow-sm;
   }
 }
 

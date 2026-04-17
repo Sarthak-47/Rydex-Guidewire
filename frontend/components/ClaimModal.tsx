@@ -22,26 +22,26 @@ export default function ClaimModal({ claim, onClose }: ClaimModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-6 bg-[var(--color-background)]/80 backdrop-blur-xl animate-in fade-in duration-500">
-      <div className="bg-[var(--color-surface)] text-white rounded-[3.5rem] w-full max-w-lg overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-500 relative">
+      <div className="bg-[var(--color-surface)] text-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl border border-white/10 animate-in zoom-in-95 duration-500 relative">
         {/* Header */}
-        <div className="p-10 bg-[var(--color-surface)] flex justify-between items-center border-b border-white/10">
+        <div className="p-6 bg-[var(--color-surface)] flex justify-between items-center border-b border-white/10">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-[#10162A]/50 rounded-2xl">
               <span className="material-symbols-outlined text-[var(--color-accent)] text-2xl font-bold">analytics</span>
             </div>
             <div>
               <h2 className="text-2xl font-black text-white tracking-tighter uppercase font-headline leading-none">Verification Analysis</h2>
-              <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mt-1">Ref: RYD-{claim.id.substring(0,8).toUpperCase()}</p>
+              <p className="text-[10px] font-black text-white/40 uppercase tracking-wider mt-1">Ref: RYD-{claim.id.substring(0,8).toUpperCase()}</p>
             </div>
           </div>
-          <button onClick={onClose} className="w-12 h-12 rounded-[1.5rem] bg-black/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-black/10 transition-all duration-300">
+          <button onClick={onClose} className="w-12 h-12 rounded-xl bg-black/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-black/10 transition-all duration-300">
             <span className="material-symbols-outlined text-xl font-bold">close</span>
           </button>
         </div>
 
-        <div className="p-10 space-y-10 overflow-y-auto max-h-[75vh] no-scrollbar">
+        <div className="p-6 space-y-10 overflow-y-auto max-h-[75vh] no-scrollbar">
           {/* Main Score Ring & Status */}
-          <div className="flex items-center gap-10 bg-white/5 p-8 rounded-[2.5rem] border border-white/10 shadow-inner">
+          <div className="flex items-center gap-6 bg-white/5 p-8 rounded-2xl border border-white/10 shadow-inner">
             <div className="relative w-24 h-24 flex items-center justify-center shrink-0">
                 <svg className="w-full h-full transform -rotate-90">
                     <circle cx="48" cy="48" r="44" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-[var(--color-accent)]/10" />
@@ -78,7 +78,7 @@ export default function ClaimModal({ claim, onClose }: ClaimModalProps) {
             <div className="grid gap-6">
               {signalConfig.map((sig) => (
                 <div key={sig.key} className="space-y-3">
-                  <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-[0.2em]">
+                  <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-wider">
                     <div className="flex items-center gap-3">
                         <span className="material-symbols-outlined text-lg text-[var(--color-accent)] opacity-40">{sig.icon}</span>
                         <span className="text-white/40">{sig.label}</span>
@@ -98,20 +98,20 @@ export default function ClaimModal({ claim, onClose }: ClaimModalProps) {
             </div>
           </div>
           
-          <div className="card-premium p-8 rounded-[2rem] flex items-center justify-between text-white shadow-xl shadow-black/20">
+          <div className="card-premium p-8 rounded-2xl flex items-center justify-between text-white shadow-xl shadow-black/20">
              <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white">
                     <span className="material-symbols-outlined text-2xl">verified</span>
                 </div>
                 <div>
-                    <p className="text-[11px] font-black uppercase tracking-[0.3em] text-white/60">Verified</p>
+                    <p className="text-[11px] font-black uppercase tracking-widest text-white/60">Verified</p>
                     <p className="text-[10px] font-black text-white/40 uppercase tracking-widest mt-1">Data Layer v4.1</p>
                 </div>
              </div>
              <span className="material-symbols-outlined text-white/40 text-3xl">task_alt</span>
           </div>
 
-          <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10 font-mono">
+          <div className="bg-white/5 p-8 rounded-2xl border border-white/10 font-mono">
             <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-4">Payout Formula</p>
             <p className="text-[12px] font-black text-[var(--color-accent)] leading-relaxed italic uppercase tracking-tighter">₹{claim.hourly_baseline_rs}/hr × {claim.disrupted_hours}hr × {(claim.as_multiplier || 1).toFixed(2)} = ₹{claim.payout_amount_rs.toLocaleString()}</p>
           </div>

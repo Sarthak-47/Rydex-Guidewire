@@ -18,7 +18,7 @@ export default function MLScatterPlot({ claims = [] }: { claims?: any[] }) {
   }));
 
   return (
-    <div className="card-premium p-10 w-full h-[500px] flex flex-col relative overflow-hidden group">
+    <div className="card-premium p-6 w-full h-[500px] flex flex-col relative overflow-hidden group">
       <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#060B19]/5 rounded-full blur-3xl group-hover:bg-[#060B19]/10 transition-all duration-700"></div>
       
       <div className="flex flex-col md:flex-row justify-between items-start mb-10 z-10 gap-6">
@@ -31,7 +31,7 @@ export default function MLScatterPlot({ claims = [] }: { claims?: any[] }) {
               Fraud Analysis
             </h3>
           </div>
-          <p className="text-muted text-xs font-black uppercase tracking-[0.2em]">Real-time detection across processed claims</p>
+          <p className="text-muted text-xs font-black uppercase tracking-wider">Real-time detection across processed claims</p>
         </div>
         <div className="flex gap-6 bg-[#10162A] p-4 rounded-2xl border border-white/10 shadow-inner">
           <div className="flex items-center gap-3">
@@ -91,7 +91,7 @@ export default function MLScatterPlot({ claims = [] }: { claims?: any[] }) {
           </ScatterChart>
         </ResponsiveContainer>
       </div>
-      <div className="mt-4 flex justify-between items-center text-[9px] font-black uppercase tracking-[0.4em] text-white/70 border-t border-white/10/10 pt-6">
+      <div className="mt-4 flex justify-between items-center text-[9px] font-black uppercase tracking-widest text-white/70 border-t border-white/10/10 pt-6">
         <span>X: Hours</span>
         <span>Y: Amount (INR)</span>
       </div>

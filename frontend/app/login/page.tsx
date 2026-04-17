@@ -43,7 +43,7 @@ export default function LoginPage() {
       {/* Dynamic Background Pattern */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-[var(--color-accent)]/10 blur-[160px] rounded-full pointer-events-none"></div>
       
-      <header className="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-10 h-[88px]">
+      <header className="fixed top-0 w-full z-50 bg-background/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-6 h-[88px]">
         <div className="flex items-center">
             <img src="/rydex_dynamic_logo.png" alt="Rydex Logo" style={{ width: '285px', height: 'auto', objectFit: 'contain' }} />
         </div>
@@ -63,7 +63,7 @@ export default function LoginPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-[var(--color-accent)] text-xs font-black uppercase tracking-[0.4em]"
+            className="text-[var(--color-accent)] text-xs font-black uppercase tracking-widest"
           >
             Access your protection dashboard
           </motion.p>
@@ -73,7 +73,7 @@ export default function LoginPage() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="card-premium p-12 relative overflow-hidden"
+          className="card-premium p-8 relative overflow-hidden"
         >
           <form onSubmit={handleLogin} className="space-y-10 relative z-10">
             <div className="space-y-4">
@@ -103,7 +103,7 @@ export default function LoginPage() {
               />
               <div className="flex justify-between items-center px-2">
                   <Link href="/register" className="text-[10px] font-black text-white/90 uppercase tracking-widest text-[var(--color-accent)] hover:underline">Create an account</Link>
-                  <span className="text-[9px] text-white/40 font-black uppercase tracking-[0.3em]">SECURE LOGIN</span>
+                  <span className="text-[9px] text-white/40 font-black uppercase tracking-widest">SECURE LOGIN</span>
               </div>
             </div>
 
@@ -122,7 +122,7 @@ export default function LoginPage() {
 
             <div className="pt-10 border-t border-white/10">
               <div className="flex justify-between items-center mb-8">
-                <p className="text-[9px] text-white/40 uppercase tracking-[0.4em] font-black">Demo Logins</p>
+                <p className="text-[9px] text-white/40 uppercase tracking-widest font-black">Demo Logins</p>
                 <div className="h-[1px] flex-1 bg-white/5/50 ml-6"></div>
               </div>
               <div className="grid grid-cols-1 gap-3">
@@ -143,7 +143,7 @@ export default function LoginPage() {
                 ))}
               </div>
               <div className="mt-10 text-center">
-                   <Link href="/admin" className="text-[10px] text-white/40 font-black uppercase tracking-[0.4em] hover:text-[var(--color-accent)] transition-all flex items-center justify-center gap-3">
+                   <Link href="/admin" className="text-[10px] text-white/40 font-black uppercase tracking-widest hover:text-[var(--color-accent)] transition-all flex items-center justify-center gap-3">
                       Admin Login
                       <span className="material-symbols-outlined text-sm">arrow_right_alt</span>
                    </Link>

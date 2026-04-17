@@ -1,9 +1,41 @@
 "use client";
 
 import { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, CircleMarker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, CircleMarker, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+
+// Formats map upon any resize or rendering anomaly 
+function MapResizer() {
+  const map = useMap();
+  useEffect(() => {
+    // Initial invalidate
+    const timeoutId = setTimeout(() => {
+      map.invalidateSize();
+    }, 250);
+    
+    // Resize observer for container changes (like tabs)
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(() => {
+        map.invalidateSize();
+      });
+    });
+    
+    const container = map.getContainer();
+    if (container) {
+      resizeObserver.observe(container);
+    }
+    
+    return () => {
+      clearTimeout(timeoutId);
+      if (container) {
+        resizeObserver.unobserve(container);
+      }
+      resizeObserver.disconnect();
+    };
+  }, [map]);
+  return null;
+}
 
 // Fix for default Leaflet icon assets in Next.js
 const fixLeafletIcons = () => {
@@ -34,8 +66,9 @@ export default function MapContent({ recentClaims = [] }: { recentClaims?: any[]
       zoom={11}
       scrollWheelZoom={false}
       zoomControl={false}
-      className="h-full w-full bg-[#10162A]"
+      className="h-full w-full bg-[#10162A] z-0"
     >
+      <MapResizer />
       <TileLayer
         attribution='&copy; CARTO'
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
