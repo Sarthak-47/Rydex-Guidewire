@@ -205,7 +205,7 @@ export default function AdminPage() {
       </aside>
 
       {/* Main Container */}
-      <div className="flex-1 flex flex-col md:pl-72">
+      <div className="flex-1 min-w-0 flex flex-col md:pl-72">
         <header className="md:hidden fixed top-0 w-full z-50 flex justify-between items-center px-6 h-20 card-premium border-b border-white/10 shadow-sm">
             <div className="flex items-center justify-center h-full">
                 <img src="/rydex_dynamic_logo.png" alt="Rydex Logo" style={{ width: '240px', height: 'auto', objectFit: 'contain' }} />
@@ -389,7 +389,7 @@ export default function AdminPage() {
                          Admin Ops v0.4
                       </div>
                    </div>
-                   <div className="rounded-3xl overflow-hidden shadow-2xl shadow-[#1B4332]/10 border border-white/10 h-[700px]">
+                   <div className="rounded-3xl flex-1 min-h-[500px] h-[60vh] overflow-hidden shadow-2xl shadow-[#1B4332]/10 border border-white/10 relative">
                       <TriggerMap recentClaims={claims} />
                    </div>
                    <div className="card-premium p-6 flex flex-wrap gap-6 items-center justify-between bg-white/5/5 border-dashed border-white/10">

@@ -85,7 +85,8 @@ export default function LoginPage() {
                   placeholder="9820001001" 
                   type="tel"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                  maxLength={10}
                   required
                 />
               </div>

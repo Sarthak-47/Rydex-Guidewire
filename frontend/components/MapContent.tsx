@@ -100,8 +100,10 @@ export default function MapContent({ recentClaims = [] }: { recentClaims?: any[]
 
       {recentClaims.slice(0, 15).map((c, i) => {
         const zone = ZONES.find((z) => z.id === (c.zone_id || 'zone-bandra')) || ZONES[0];
-        const jitterLat = zone.coords[0] + (Math.random() - 0.5) * 0.04;
-        const jitterLng = zone.coords[1] + (Math.random() - 0.5) * 0.04;
+        const jitterLat = zone.coords[0] + (Math.random() - 0.5) * 0.03;
+        const isCoastal = ['zone-bandra', 'zone-dadar', 'zone-andheri'].includes(zone.id);
+        const lngJitter = isCoastal ? (Math.random() * 0.025) : ((Math.random() - 0.5) * 0.03);
+        const jitterLng = zone.coords[1] + lngJitter;
         const isFraud = c.as_score < 45 || c.status === 'manual_review';
         
         return (

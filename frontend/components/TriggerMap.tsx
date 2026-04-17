@@ -15,7 +15,7 @@ const MapWrapper = dynamic(() => import("./MapContent"), {
 
 export default function TriggerMap({ recentClaims = [] }: { recentClaims?: any[] }) {
   return (
-    <div className="h-[500px] w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative z-10 group bg-white/5">
+    <div className="h-full w-full relative z-10 group">
       <MapWrapper recentClaims={recentClaims} />
       
       {/* Visual Overlays */}

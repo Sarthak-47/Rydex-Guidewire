@@ -53,7 +53,7 @@ export default function MLScatterPlot({ claims = [] }: { claims?: any[] }) {
               type="number" 
               dataKey="disrupted_hours" 
               name="Hours" 
-              tick={{ fill: '#0B2E22', opacity: 0.8, fontSize: 10, fontWeight: 900 }}
+              tick={{ fill: 'rgba(255,255,255,0.5)', opacity: 0.8, fontSize: 10, fontWeight: 900 }}
               axisLine={false}
               tickLine={false}
             />
@@ -61,7 +61,7 @@ export default function MLScatterPlot({ claims = [] }: { claims?: any[] }) {
               type="number" 
               dataKey="amount" 
               name="Payout" 
-              tick={{ fill: '#0B2E22', opacity: 0.8, fontSize: 10, fontWeight: 900 }}
+              tick={{ fill: 'rgba(255,255,255,0.5)', opacity: 0.8, fontSize: 10, fontWeight: 900 }}
               axisLine={false}
               tickLine={false}
             />
@@ -78,11 +78,11 @@ export default function MLScatterPlot({ claims = [] }: { claims?: any[] }) {
               }}
               itemStyle={{ color: 'white', fontSize: '12px', fontWeight: 'bold' }}
             />
-            <Scatter name="Claims" data={plotData} fill="#1B4332">
+            <Scatter name="Claims" data={plotData} fill="var(--color-accent)">
               {plotData.map((entry, index) => (
                 <Cell 
                   key={`cell-${index}`} 
-                  fill={entry.is_fraud === 1 ? '#F87171' : '#1B4332'} 
+                  fill={entry.is_fraud === 1 ? '#F87171' : 'var(--color-accent)'} 
                   opacity={entry.is_fraud === 1 ? 1 : 0.4}
                   className="transition-all duration-500 hover:opacity-100 cursor-pointer"
                 />
