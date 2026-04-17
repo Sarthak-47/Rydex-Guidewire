@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rydex Parametric Console - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-background": "#191c1c",
+                        "primary-fixed": "#86f8c9",
+                        "on-tertiary-container": "#fffbff",
+                        "tertiary-container": "#b85751",
+                        "secondary-fixed-dim": "#a5d0ba",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3131",
+                        "primary-container": "#008560",
+                        "on-surface-variant": "#3d4943",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#c0ecd6",
+                        "on-tertiary-fixed": "#410003",
+                        "secondary-container": "#bdead3",
+                        "on-secondary-container": "#426b59",
+                        "background": "#f8faf9",
+                        "on-primary-container": "#f5fff7",
+                        "on-secondary-fixed": "#002115",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f4f3",
+                        "secondary": "#3e6655",
+                        "on-primary-fixed": "#002115",
+                        "inverse-primary": "#68dbae",
+                        "surface-container-high": "#e6e9e8",
+                        "surface-dim": "#d8dada",
+                        "primary-fixed-dim": "#68dbae",
+                        "surface-tint": "#006c4e",
+                        "surface-variant": "#e1e3e2",
+                        "tertiary": "#993f3a",
+                        "on-primary-fixed-variant": "#00513a",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#bccac1",
+                        "primary": "#1D9E75", // Updated to the requested Rydex accent
+                        "surface": "#f8faf9",
+                        "on-error-container": "#93000a",
+                        "outline": "#6d7a73",
+                        "on-secondary-fixed-variant": "#264e3e",
+                        "inverse-on-surface": "#eff1f0",
+                        "tertiary-fixed": "#ffdad6",
+                        "surface-container": "#eceeed",
+                        "on-surface": "#191c1c",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "on-tertiary-fixed-variant": "#7e2a27",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f8faf9",
+                        "surface-container-highest": "#e1e3e2"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8faf9; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .bottom-nav-shadow { box-shadow: 0 -4px 12px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary/20">
+<!-- Top App Bar (Mobile) -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-surface-container h-16 flex items-center justify-between px-5">
+<div class="flex items-center gap-3">
+<img alt="Rydex Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ugm_-EZ-mnQr3tZxd3-CsFIWcCb-KHqR9-Q0DLVrZw1UNQrk9oPU7nAeiHIR18wwbLpVbegx4hKTKXQ4WD3gZlx_g0DAFozy79fJ1LWJ2Vm-gnc8aqFjzwa6LxR_R4gmcSOESUyiVrj_QM58imEKdb8iMe71_xPnE1wa2xJ1sF-_6cuIN8NGOPBCeo0l2erikfo85MQQ5wlALXx7ORfO_R6ngN9RZjl-kRmhpaO7_PXQ-DZvJOlJnlXwqDToHDWLkwZ1SS2VJcBGw"/>
+<div class="h-4 w-px bg-surface-container-highest mx-1"></div>
+<h1 class="text-xs font-headline font-bold uppercase tracking-tight text-on-surface-variant">Console</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img alt="Rider Profile Photo" data-alt="Close up professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWlv3qB1VnA9lLifHujYZ9wBP64TelHltIC62jHapt86sIgIm6cX9AWU19GzsmG5Jd6njTo-tAQbm48Gmi-8srD5oWAWUYbFq67Qo2lEDEOAB6BYozudrgYrL-gy7PA4BO45QKUSCuhyXpDSzQs4-5eGcePN2khNX_fi4sAdofWfcJJ99fkO4-BlztmH4s4u1O2A-_rVIBj16ETVQKpt_-5l5iM0B1FfVW3-qVFyEzNnZvXDT6c2Rs5E5udA5B5TnLyzDFyiLe8VW4"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pb-24 pt-4 px-5 space-y-6">
+<!-- Welcome & Status -->
+<section class="flex items-center justify-between">
+<div>
+<h2 class="text-lg font-headline font-extrabold text-on-background">Network Overview</h2>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-mono font-medium text-outline uppercase">Oracle Live Feed</span>
+</div>
+</div>
+<button class="p-2 rounded-full bg-surface-container-low border border-surface-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="tune">tune</span>
+</button>
+</section>
+<!-- Stats Row (Vertical Scroll Layout for Mobile) -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-variant/30">
+<p class="text-[10px] font-label uppercase tracking-widest text-outline mb-1">Total Claims</p>
+<h3 class="text-xl font-headline font-extrabold text-on-background">1,482</h3>
+<p class="text-[10px] text-primary font-bold mt-2 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="trending_up">trending_up</span>
+                    12.4%
+                </p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-variant/30">
+<p class="text-[10px] font-label uppercase tracking-widest text-outline mb-1">Approved %</p>
+<h3 class="text-xl font-headline font-extrabold text-on-background">94.2%</h3>
+<div class="w-full h-1 bg-surface-container-high rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-primary" style="width: 94.2%"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-variant/30">
+<p class="text-[10px] font-label uppercase tracking-widest text-outline mb-1">Paid Out</p>
+<h3 class="text-xl font-mono font-extrabold text-on-background">₹8.4L</h3>
+<p class="text-[10px] text-outline font-medium mt-2">14m ago</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-variant/30">
+<p class="text-[10px] font-label uppercase tracking-widest text-outline mb-1">Avg AS Score</p>
+<h3 class="text-xl font-headline font-extrabold text-on-background">82</h3>
+<span class="inline-block mt-2 px-1.5 py-0.5 bg-primary/10 text-primary text-[9px] font-bold rounded">TIER 1</span>
+</div>
+</div>
+<!-- AS Score Distribution (Optimized Chart) -->
+<section class="bg-surface-container-lowest p-5 rounded-2xl border border-surface-variant/30">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="font-headline font-bold text-base">AS Score Distribution</h4>
+<p class="text-[11px] text-outline">Network-wide metrics</p>
+</div>
+<span class="text-[10px] font-mono font-bold text-primary bg-primary/5 px-2 py-0.5 rounded">N=1,482</span>
+</div>
+<div class="flex items-end gap-3 h-40 border-b border-surface-variant pb-2 px-2">
+<div class="flex-1 flex flex-col justify-end items-center h-full">
+<div class="w-full bg-error/20 rounded-t-md" style="height: 12%;"></div>
+<span class="mt-2 text-[9px] font-mono font-bold text-error">0-44</span>
+</div>
+<div class="flex-1 flex flex-col justify-end items-center h-full">
+<div class="w-full bg-secondary-container rounded-t-md" style="height: 28%;"></div>
+<span class="mt-2 text-[9px] font-mono font-bold text-secondary">45-74</span>
+</div>
+<div class="flex-1 flex flex-col justify-end items-center h-full">
+<div class="w-full bg-primary rounded-t-md" style="height: 60%;"></div>
+<span class="mt-2 text-[9px] font-mono font-bold text-primary">75-100</span>
+</div>
+</div>
+</section>
+<!-- Zone Risk Heatmap (Horizontal Scroll Table) -->
+<section class="bg-surface-container-lowest p-5 rounded-2xl border border-surface-variant/30">
+<h4 class="font-headline font-bold text-base mb-4">Zone Risk Heatmap</h4>
+<div class="overflow-x-auto no-scrollbar -mx-5 px-5">
+<table class="w-full text-left min-w-[320px]">
+<thead>
+<tr class="text-[10px] font-label uppercase tracking-widest text-outline border-b border-surface-variant">
+<th class="pb-3 font-semibold">Location</th>
+<th class="pb-3 font-semibold">Risk Index</th>
+<th class="pb-3 font-semibold text-right">Factor</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/30">
+<tr>
+<td class="py-3.5 text-xs font-headline font-semibold text-on-background">Bandra West</td>
+<td class="py-3.5">
+<div class="w-16 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 25%"></div>
+</div>
+</td>
+<td class="py-3.5 text-right font-mono text-[11px]">1.05x</td>
+</tr>
+<tr>
+<td class="py-3.5 text-xs font-headline font-semibold text-on-background">Powai</td>
+<td class="py-3.5">
+<div class="w-16 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 55%"></div>
+</div>
+</td>
+<td class="py-3.5 text-right font-mono text-[11px]">1.18x</td>
+</tr>
+<tr>
+<td class="py-3.5 text-xs font-headline font-semibold text-on-background">Kurla</td>
+<td class="py-3.5">
+<div class="w-16 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 88%"></div>
+</div>
+</td>
+<td class="py-3.5 text-right font-mono text-[11px]">1.45x</td>
+</tr>
+</tbody>
+</table>
+</div>
+<button class="w-full mt-4 py-2 text-[10px] font-bold text-primary uppercase tracking-widest">See all zones</button>
+</section>
+<!-- Live Claims Feed (Mobile List) -->
+<section class="space-y-4">
+<div class="flex justify-between items-center px-1">
+<h4 class="font-headline font-bold text-base">Live Claims</h4>
+<span class="bg-primary/10 text-primary text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Active</span>
+</div>
+<div class="space-y-3">
+<!-- Feed Item 1 -->
+<div class="p-4 bg-white rounded-2xl shadow-sm border border-surface-container flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h5 class="text-xs font-headline font-bold truncate">Rider #88204</h5>
+<span class="text-[10px] text-outline font-medium whitespace-nowrap">Now</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[10px] font-mono font-bold text-primary">AS 92</span>
+<span class="text-[9px] px-1.5 bg-primary text-white rounded font-bold">AUTO</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-sm text-on-background">₹1,200</p>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="p-4 bg-white rounded-2xl shadow-sm border border-surface-container flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="person">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h5 class="text-xs font-headline font-bold truncate">Rider #77102</h5>
+<span class="text-[10px] text-outline font-medium whitespace-nowrap">4m</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[10px] font-mono font-bold text-secondary">AS 58</span>
+<span class="text-[9px] px-1.5 bg-secondary-container text-secondary rounded font-bold uppercase">Hold</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-sm text-on-background">₹850</p>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="p-4 bg-white rounded-2xl shadow-sm border border-surface-container flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-error/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error" data-icon="person">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h5 class="text-xs font-headline font-bold truncate">Rider #66291</h5>
+<span class="text-[10px] text-outline font-medium whitespace-nowrap">12m</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-[10px] font-mono font-bold text-error">AS 34</span>
+<span class="text-[9px] px-1.5 bg-error text-white rounded font-bold">FLAG</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono font-bold text-sm text-on-background">₹450</p>
+</div>
+</div>
+</div>
+<button class="w-full bg-surface-container-high py-3 rounded-xl text-xs font-bold text-on-surface-variant uppercase tracking-widest active:scale-[0.98] transition-transform">View Full Ledger</button>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-t border-surface-container-high px-6 h-20 flex items-center justify-between bottom-nav-shadow">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[10px] font-medium">Analytics</span>
+</a>
+<!-- FAB Center Item -->
+<div class="relative -top-6">
+<button class="w-14 h-14 bg-primary text-white rounded-2xl shadow-lg shadow-primary/30 flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="waves">waves</span>
+<span class="text-[10px] font-medium">Pools</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+<!-- Dynamic Notch Safe Spacing -->
+<div class="h-safe-bottom"></div>
+</body></html>

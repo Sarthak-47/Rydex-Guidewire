@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rydex | Worker Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;family=Roboto+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#191c1c",
+              "primary-fixed": "#86f8c9",
+              "on-tertiary-container": "#fffbff",
+              "tertiary-container": "#b85751",
+              "secondary-fixed-dim": "#a5d0ba",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#2e3131",
+              "primary-container": "#008560",
+              "on-surface-variant": "#3d4943",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#c0ecd6",
+              "on-tertiary-fixed": "#410003",
+              "secondary-container": "#bdead3",
+              "on-secondary-container": "#426b59",
+              "background": "#f8faf9",
+              "on-primary-container": "#f5fff7",
+              "on-secondary-fixed": "#002115",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f2f4f3",
+              "secondary": "#3e6655",
+              "on-primary-fixed": "#002115",
+              "inverse-primary": "#68dbae",
+              "surface-container-high": "#e6e9e8",
+              "surface-dim": "#d8dada",
+              "primary-fixed-dim": "#68dbae",
+              "surface-tint": "#006c4e",
+              "surface-variant": "#e1e3e2",
+              "tertiary": "#993f3a",
+              "on-primary-fixed-variant": "#00513a",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#bccac1",
+              "primary": "#00694c",
+              "surface": "#f8faf9",
+              "on-error-container": "#93000a",
+              "outline": "#6d7a73",
+              "on-secondary-fixed-variant": "#264e3e",
+              "inverse-on-surface": "#eff1f0",
+              "tertiary-fixed": "#ffdad6",
+              "surface-container": "#eceeed",
+              "on-surface": "#191c1c",
+              "tertiary-fixed-dim": "#ffb3ad",
+              "on-tertiary-fixed-variant": "#7e2a27",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "surface-bright": "#f8faf9",
+              "surface-container-highest": "#e1e3e2"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["Roboto Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.noise-overlay {
+    position: relative
+    }
+.noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCa_19-nPLsalsmLWzzIld4Cy2nuhxu96iU-Hp5EIrCRngn0jiOJw5OgJ67mV01ww5ogq6IeC1yE8cYV7zGI1xfAWLqwRgdt4ZlJsA9DCOr6eg8NEqRJlBbx9928GsNjkmXd0EcBNIAlg_ZcgQoNAoC28jChFnCIZbTr96aH_Rp2rvCi8AwuY87OcXUm3Ps4eFG4OznOugA6f7I4DMo4nqGS9bbxZqpQW-MmkS-SccZMVzDK9SuETeH07jv-_4S47XqAinkisN6f8rh);
+    opacity: 0.02;
+    pointer-events: none
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#F8FAF9] dark:bg-slate-950 border-b border-on-surface/5">
+<div class="flex items-center gap-3"><img alt="Rydex Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ugm_-EZ-mnQr3tZxd3-CsFIWcCb-KHqR9-Q0DLVrZw1UNQrk9oPU7nAeiHIR18wwbLpVbegx4hKTKXQ4WD3gZlx_g0DAFozy79fJ1LWJ2Vm-gnc8aqFjzwa6LxR_R4gmcSOESUyiVrj_QM58imEKdb8iMe71_xPnE1wa2xJ1sF-_6cuIN8NGOPBCeo0l2erikfo85MQQ5wlALXx7ORfO_R6ngN9RZjl-kRmhpaO7_PXQ-DZvJOlJnlXwqDToHDWLkwZ1SS2VJcBGw"/></div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400" data-icon="dark_mode">dark_mode</span>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-surface-container-high border-2 border-[#1D9E75]/20">
+<img class="h-full w-full object-cover" data-alt="Portrait of a South Asian delivery professional smiling warmly, professional studio lighting with soft green background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnFTRUGf5M0NUML_IETrn6u73kBegTF4O4lICsFNI2xGygiQgu34Owx0mQzsfk_HbF9icTkU4qAixsuNrHR5Is41oM__ZF-yGz7n_H1l6I-yJqADx849L5jj6SM1_GTeBz6hrDMCYoQFSazSMhRWsMEw2DKJm6IAt6Phaz0h6JrGNKo8TixSqCa-w5--7r9o2UlO2AbO7vN0ysXuu-8roV7sAQQ3fsWHhAd3Qi0H1RRVYj2B8OXJt_e72xdU1MNJCzGYr69AwMCVko"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-md mx-auto space-y-10">
+<!-- Greeting & Status -->
+<section class="space-y-1">
+<h1 class="text-3xl font-headline font-extrabold tracking-tight text-on-surface">Namaste, Arjun</h1>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5 bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-[14px] text-[#1D9E75]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[11px] font-bold uppercase tracking-widest text-primary">Active</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">Bandra-Santacruz Zone</span>
+</div>
+</section>
+<!-- Active Policy Card -->
+<section class="relative">
+<div class="bg-white rounded-2xl p-6 shadow-[0px_12px_32px_rgba(25,28,28,0.04)] border border-primary/5 overflow-hidden">
+<!-- Decorative teal glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="text-[10px] uppercase tracking-[0.2em] font-bold text-primary mb-1">Active Policy</p>
+<h2 class="text-2xl font-headline font-extrabold">Shield Basic</h2>
+</div>
+<span class="material-symbols-outlined text-primary-container" data-icon="verified_user">verified_user</span>
+</div>
+<div class="grid grid-cols-2 gap-6 mb-8">
+<div>
+<p class="text-xs text-on-surface-variant mb-1 font-medium">Weekly Cap</p>
+<p class="font-mono text-xl font-bold">₹1,000</p>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant mb-1 font-medium">Premium</p>
+<p class="font-mono text-xl font-bold">₹36<span class="text-xs text-on-surface-variant font-normal">/wk</span></p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-end">
+<p class="text-xs font-bold text-on-surface">Cap Utilization</p>
+<p class="font-mono text-sm font-bold text-primary">60%</p>
+</div>
+<div class="h-3 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container w-[60%]"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant text-right italic">₹400 remaining this week</p>
+</div>
+</div>
+</section>
+<!-- Disruption Alert (Subtle Amber) -->
+<section>
+<div class="bg-[#FFF4E5] rounded-2xl p-5 flex items-start gap-4 border border-amber-200/50">
+<div class="bg-amber-100 p-2.5 rounded-xl">
+<span class="material-symbols-outlined text-amber-700" data-icon="thunderstorm" style="font-variation-settings: 'FILL' 1;">thunderstorm</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<h3 class="font-headline font-bold text-amber-900 text-sm">Disruption alert</h3>
+<span class="font-mono text-[11px] font-bold bg-amber-200/50 px-2 py-0.5 rounded text-amber-800">15 mins</span>
+</div>
+<p class="text-xs text-amber-800/80 leading-snug">Trigger: <span class="font-bold">Rainfall — Bandra West</span>. Parametric payout countdown initiated.</p>
+</div>
+</div>
+</section>
+<!-- Recent Payouts -->
+<section class="space-y-6">
+<div class="flex justify-between items-center">
+<h3 class="font-headline font-bold text-lg">Recent payouts</h3>
+<button class="text-primary text-xs font-bold uppercase tracking-wider">View Ledger</button>
+</div>
+<div class="space-y-3">
+<!-- Payout Item 1 -->
+<div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-[0px_4px_12px_rgba(0,0,0,0.02)] transition-all hover:pl-2">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<p class="font-mono font-bold text-on-surface">₹200.00</p>
+<span class="text-[9px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">Success</span>
+</div>
+<p class="text-[10px] text-on-surface-variant font-mono">URN: 421098 • 2h ago</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Payout Item 2 -->
+<div class="bg-white rounded-xl p-4 flex items-center justify-between shadow-[0px_4px_12px_rgba(0,0,0,0.02)] transition-all hover:pl-2">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<p class="font-mono font-bold text-on-surface">₹150.00</p>
+<span class="text-[9px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter">Success</span>
+</div>
+<p class="text-[10px] text-on-surface-variant font-mono">URN: 421082 • Yesterday</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Empty State Filler / List Logic -->
+<div class="h-[1px] bg-surface-container mx-4"></div>
+<p class="text-center text-[10px] text-on-surface-variant/60 font-medium py-2">Last 7 days of activity</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-[#1D9E75]/10 shadow-[0px_-12px_32px_rgba(25,28,28,0.04)]">
+<div class="flex justify-around items-center h-20 pb-4">
+<!-- Ledger -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#1D9E75] transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="AccountBalanceWallet" style="font-size: 22px;">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest">Ledger</span>
+</a>
+<!-- Shield (Active) -->
+<a class="flex flex-col items-center justify-center text-[#1D9E75] dark:text-[#26C491] bg-[#1D9E75]/5 rounded-xl px-4 py-1 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="Security" style="font-size: 22px;">security</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold">Shield</span>
+</a>
+<!-- Routes -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#1D9E75] transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="Route" style="font-size: 22px;">route</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest">Routes</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-[#1D9E75] transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="Person" style="font-size: 22px;">person</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

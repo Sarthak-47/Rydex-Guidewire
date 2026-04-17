@@ -1,0 +1,23 @@
+﻿## Rydex Application Startup Guide
+
+### Backend (virtualâ€‘env)
+```powershell
+cd "d:\New folder (5)\rydex\backend"
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+### Frontend (Next.js)
+```powershell
+cd "d:\New folder (5)\rydex\frontend"
+npm install
+npm run dev
+```
+
+### Optional Docker backend
+```powershell
+cd "d:\New folder (5)\rydex\backend"
+docker build -t rydex-backend:latest .
+docker run -d -p 8000:8000 --name rydex-backend rydex-backend:latest
+```
